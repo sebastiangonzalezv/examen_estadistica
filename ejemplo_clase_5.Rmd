@@ -1,0 +1,42 @@
+---
+title: "Practica2"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+## Práctica 02: usando R Markdown 
+1. Usando R Markdown haga un análisis descriptivo de las variables Paridad, Edad de la madre y Gestación, que contenga tanto anÃ¡lisis gráficos como numéricos para ambas variables. Considere los grupos de edad con puntos de corte 22, 30, 38, 45. En todos los análisis use solamente las filas que no tienen datos faltantes.
+
+### solucion
+leer el archivo 'babies.txt' desde un servidor cuya [URL]('https://tinyurl.com/ya9fvteb'):
+
+
+```{r}
+url = 'https://tinyurl.com/ya9fvteb'
+babies = read.table(url, header=T, sep='\t')
+```
+
+resuemen de la base de datos:
+
+```{r}
+summary(babies)
+```
+
+para trabajar con la base de datos sin valores faltantes, indicar que las variables parity y smoke son factores cualitativos y presentar un nuevo resumen de la nueva base de datos
+
+
+# EstadÃ�sticos de resumen de las variables en la base de datos
+summary(babies)
+
+# Nueva base de datos sin valores perdidos y 
+babies2 <- na.omit(babies)
+babies2$parity <- factor(babies2$parity)
+babies2$smoke <- factor(babies2$smoke)
+summary(babies2)
+
+# DimensiÃ³n de la base de datos Ver cada variables, el tipo y los valores
+str(babies2)
+
+
